@@ -40,9 +40,9 @@ fn single_step_swap(program_id: &Pubkey, accounts: &[AccountInfo], exchange_id: 
     // make checks on all the accounts based on exchange_id and initiates swap
     Ok(())
 }
-fn two_step_swap(program_id: &Pubkey, accounts: &[AccountInfo], exchange_a_id: &u8, exchange_b_id: &u8) -> ProgramResult {
+fn two_step_swap(_program_id: &Pubkey, _accounts: &[AccountInfo], _exchange_a_id: &u8, _exchange_b_id: &u8) -> ProgramResult {
     Ok(())
 }
-fn three_step_swap(program_id: &Pubkey, accounts: &[AccountInfo], exchange_a_id: &u8, exchange_b_id: &u8, exchange_c_id: &u8) -> ProgramResult {
+fn three_step_swap(_program_id: &Pubkey, _accounts: &[AccountInfo], _exchange_a_id: &u8, _exchange_b_id: &u8, _exchange_c_id: &u8) -> ProgramResult {
     Ok(())
 }
