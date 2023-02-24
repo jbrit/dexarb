@@ -6,7 +6,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+anchor-lang = "0.26.0"
+anchor-spl = "0.26.0"
+borsh = { version = "0.10.2", features = ["const-generics"] }
 solana-program = "1.15.2"
+spl-token-swap = "3.0.0"
+whirlpools = "0.3.0"
 
 [lib]
 name = "dexarb"
