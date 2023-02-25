@@ -1,5 +1,5 @@
 use anchor_lang::prelude::*;
-use borsh::{BorshDeserialize, BorshSerialize};
+use anchor_lang::prelude::borsh::BorshDeserialize;
 use solana_program::{
     account_info::AccountInfo,
     instruction::{AccountMeta, Instruction},
@@ -21,10 +21,10 @@ struct OrcaAccounts<'info> {
     pub fee_account: AccountInfo<'info>,
 }
 
-pub fn orca_swap<'a, NextAccount>(get_next_account: NextAccount, payload: &[u8]) -> Result<()>
-where
-    NextAccount: FnMut() -> Result<&AccountInfo<'a>>,
-{
+pub fn orca_swap(
+    get_next_account: fn() -> Result<&'static AccountInfo<'static>>,
+    payload: &[u8],
+) -> Result<()> {
     #[derive(BorshDeserialize)]
     pub struct OrcaPayload {
         amount_in: u64,
@@ -92,13 +92,10 @@ where
     Ok(())
 }
 
-pub fn whirlpool_swap<'a, NextAccount>(
-    get_next_account: NextAccount,
-    payload: &[u8]
-) -> Result<()>
-where
-    NextAccount: FnMut() -> Result<&AccountInfo<'a>>,
-{
+pub fn whirlpool_swap(
+    get_next_account: fn() -> Result<&'static AccountInfo<'static>>,
+    payload: &[u8],
+) -> Result<()> {
     #[derive(BorshDeserialize)]
     pub struct WhirlpoolPayload {
         amount: u64,

@@ -1,6 +1,6 @@
 use solana_program::{
     account_info::next_account_info, account_info::AccountInfo, entrypoint,
-    entrypoint::ProgramResult, msg, pubkey::Pubkey,
+    entrypoint::ProgramResult, pubkey::Pubkey,
 };
 
 mod exchanges;
@@ -36,7 +36,7 @@ fn single_step_swap(
     let accounts_iter = &mut accounts.iter();
     let mut get_next_account = || next_account_info(accounts_iter);
     let exchange = exchanges::get_exchange(exchange_id);
-    exchange.swap_function(get_next_account, instruction_data[4..]);
+    (exchange.swap_function)(get_next_account, &instruction_data[4..]);
     Ok(())
 }
 fn two_step_swap(

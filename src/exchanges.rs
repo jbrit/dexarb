@@ -1,10 +1,12 @@
+use anchor_lang::prelude::*;
+
 mod helpers;
 
 struct Exchange {
-    swap_function: fn(FnMut, &[u8]) -> Result<()>,
+    pub swap_function: fn(fn() -> Result<&'static AccountInfo<'static>>, &[u8]) -> Result<()>,
 }
 
-pub fn get_exchange<NextAccount>(id: u8) -> Exchange {
+pub fn get_exchange(id: u8) -> Exchange {
     match id {
         0 => Exchange {
             swap_function: helpers::orca_swap,
